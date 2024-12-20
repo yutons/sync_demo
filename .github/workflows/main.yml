@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: git-branch-sync-action
-        uses: yutons/git-branch-sync-action@v1.0.1
+        uses: yutons/git-branch-sync-action@v1.0.2
         env:
           # 注意在 Settings->Secrets 配置 SSH_PRIVATE_KEY
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
