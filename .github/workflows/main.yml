@@ -1,0 +1,25 @@
+name: Fork Sync To Gitee
+# 注意：需要手动添加SSH_PRIVATE_KEY
+on:
+  # push:
+  #schedule:
+    # 每天北京时间9点跑
+    #- cron:  '0 7,12 * * *'
+  workflow_dispatch: # on button click
+  
+jobs:
+  hub-mirror-to-gitee-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git-branch-sync-action
+        uses: yutons/git-branch-sync-action@v1.0.0
+        env:
+          # 注意在 Settings->Secrets 配置 SSH_PRIVATE_KEY
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        with:
+          # 注意替换为你的 GitHub 源仓库地址
+          source-repo: git@github.com:yutons3112/sync_test_from.git
+          source-branch: main
+          # 注意替换为你的 Gitee 目标仓库地址
+          destination-repo: git@github.com:yutons/sync_test_to.git
+          destination-branch: main
